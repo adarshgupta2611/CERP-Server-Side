@@ -2,6 +2,7 @@ package com.app.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -41,6 +42,10 @@ public class Student extends BaseEntity{
 	@Column(length=50)
 	private String address;
 	
+	@ManyToOne
+	@JoinColumn(name="course_id")
+	private Course course;
+
 	public Student(
 			@NotBlank(message = "First Name is required!!") @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters") String firstName,
 			String lastName,
@@ -53,9 +58,7 @@ public class Student extends BaseEntity{
 		this.email = email;
 		this.password = password;
 		this.address = address;
-	}
-	
-	
+	}	
 	
 	
 }
