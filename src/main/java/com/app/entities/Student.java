@@ -24,7 +24,7 @@ import lombok.ToString;
 @ToString(exclude = "password")
 public class Student extends BaseEntity{
 	@Column(length = 20)
-	@NotBlank(message = "First Name is required!!")
+	@NotBlank(message = "First Name is required")
 	@Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters")
 	private String firstName;
 	@Column(length = 20)
@@ -33,6 +33,8 @@ public class Student extends BaseEntity{
 	@NotBlank(message = "Email id is required")
 	@Email(message = "Invalid Email address")
 	private String email;
+	@NotBlank(message = "Gender should not be blank")
+	private String gender;
 	@Column(length = 20,nullable = false)
 	@NotBlank(message = "Password is required")
     @Size(min = 6, message = "Password should have at least 6 characters")
@@ -47,18 +49,22 @@ public class Student extends BaseEntity{
 	private Course course;
 
 	public Student(
-			@NotBlank(message = "First Name is required!!") @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters") String firstName,
+			@NotBlank(message = "First Name is required") @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters") String firstName,
 			String lastName,
 			@NotBlank(message = "Email id is required") @Email(message = "Invalid Email address") String email,
+			@NotBlank(message = "Gender should not be blank") String gender,
 			@NotBlank(message = "Password is required") @Size(min = 6, message = "Password should have at least 6 characters") @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[#@$*]).{6,20})", message = "Invalid Password!") String password,
-			String address) {
+			String address, Course course) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.gender = gender;
 		this.password = password;
 		this.address = address;
-	}	
+		this.course = course;
+	}
+
 	
 	
 }

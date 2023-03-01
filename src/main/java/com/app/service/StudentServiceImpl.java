@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.custom_exceptions.EntityNotFoundException;
+import com.app.dto.StudentRequestDto;
 import com.app.entities.Course;
 import com.app.entities.Student;
 import com.app.repository.CourseRepository;
@@ -20,9 +21,16 @@ public class StudentServiceImpl implements StudentService {
 	private StudentRepository studentRepository;
 
 	@Override
-	public Student addStudent(Student student, Long courseId) {
+	public Student addStudent(StudentRequestDto studentdto, Long courseId) {
 		Course course = courseRepository.findById(courseId)
 				.orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + courseId));
+		Student student = new Student();
+		student.setFirstName(studentdto.getFirstName());
+		student.setLastName(studentdto.getLastName());
+		student.setEmail(studentdto.getEmail());
+		student.setGender(studentdto.getGender());
+		student.setPassword(studentdto.getPassword());
+		student.setAddress(studentdto.getAddress());
 		student.setCourse(course);
 		return studentRepository.save(student);
 	}
