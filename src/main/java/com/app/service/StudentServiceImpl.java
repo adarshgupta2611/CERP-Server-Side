@@ -35,4 +35,14 @@ public class StudentServiceImpl implements StudentService {
 		return studentRepository.save(student);
 	}
 
+	@Override
+	public Student getStudentDetails(Long studentId) {
+		return studentRepository.findById(studentId)
+				.orElseThrow(()->new EntityNotFoundException("Student not found with id: "+studentId));
+	}
+	
+	@Override
+	public Student authenticateStudent(String email, String password) {
+		return studentRepository.findByEmailAndPassword(email, password);
+	}
 }
