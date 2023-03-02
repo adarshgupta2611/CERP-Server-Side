@@ -47,7 +47,7 @@ public class Student extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name="course_id")
 	private Course course;
-
+	
 	public Student(
 			@NotBlank(message = "First Name is required") @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters") String firstName,
 			String lastName,
