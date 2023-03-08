@@ -22,7 +22,7 @@ public class AdminTest {
 	
 	@Test
 	void contextLoads() {
-		ar.saveAll(List.of(new Admin("adarsh@gmail.com", "Adarsh@111"),new Admin("nikita@gmail.com","Nikita@111")));
+		ar.saveAll(List.of(new Admin("admin@gmail.com", "Admin@123"),new Admin("adarsh@gmail.com","Adarsh789")));
 
 	}
 }

@@ -42,7 +42,7 @@ public class AttendanceController {
 	            return ResponseEntity.status(500).body("Attendance is already present");
 	}
 	
-	@GetMapping("/{subjectName}")
+	@GetMapping("/admins/{subjectName}")
 	public ResponseEntity<?> showAttendance(@PathVariable String subjectName){
     	List<AttendanceList> attendanceList = attendanceService.showAttendance(subjectName);
     	if(attendanceList!=null)
