@@ -2,16 +2,8 @@ package com.app.entities;
 
 import javax.persistence.Entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
+
 public class Course extends BaseEntity {
 	private String courseName;
 	
@@ -19,4 +11,23 @@ public class Course extends BaseEntity {
 		super();
 		this.courseName = courseName;
 	}
+
+	public Course() {
+		super();
+	}
+
+	public String getCourseName() {
+		return courseName;
+	}
+
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [courseName=" + courseName + "]";
+	}
+	
+	
 }

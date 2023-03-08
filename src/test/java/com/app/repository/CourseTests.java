@@ -1,4 +1,6 @@
-package com.app;
+package com.app.repository;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,20 +10,18 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import com.app.entities.Course;
-import com.app.repository.CourseRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-class CerpApplicationTests {
+class CourseTests {
 
 	@Autowired
 	CourseRepository cr;
 	
 	@Test
 	void contextLoads() {
-		Course cs = new Course("PG-DBDA");
-		cr.save(cs);
+		cr.saveAll(List.of(new Course("PG-DAC"),new Course("PG-DBDA")));
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.app.dto;
 
-public class StudentCredentials {
+public class AdminDto {
+	
 	private String email;
 	private String password;
-	
 	public String getEmail() {
 		return email;
 	}
@@ -16,21 +16,17 @@ public class StudentCredentials {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public StudentCredentials(String email, String password) {
+	@Override
+	public String toString() {
+		return "AdminDto [email=" + email + "]";
+	}
+	public AdminDto(String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 	}
-	public StudentCredentials() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "StudentCredentials [email=" + email + ", password=" + password + "]";
-	}
+
 	
 	
-	
+
 }
-
-

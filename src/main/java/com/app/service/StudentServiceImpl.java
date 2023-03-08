@@ -24,6 +24,8 @@ public class StudentServiceImpl implements StudentService {
 	public Student addStudent(StudentRequestDto studentdto, Long courseId) {
 		Course course = courseRepository.findById(courseId)
 				.orElseThrow(() -> new EntityNotFoundException("Course not found with id: " + courseId));
+		Student st = studentRepository.findByEmailAndPassword(studentdto.getEmail(), studentdto.getPassword());
+		if(st == null) {
 		Student student = new Student();
 		student.setFirstName(studentdto.getFirstName());
 		student.setLastName(studentdto.getLastName());
@@ -33,6 +35,10 @@ public class StudentServiceImpl implements StudentService {
 		student.setAddress(studentdto.getAddress());
 		student.setCourse(course);
 		return studentRepository.save(student);
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override

@@ -8,16 +8,8 @@ import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+
 public class Attendance extends BaseEntity {
 	@Range(min = 0, max = 100, message = "Attendance percentage should be between 0-100 only")
 	private int attendance;
@@ -37,4 +29,50 @@ public class Attendance extends BaseEntity {
 		super();
 		this.attendance = attendance;
 	}
+
+	public Attendance(
+			@Range(min = 0, max = 100, message = "Attendance percentage should be between 0-100 only") int attendance,
+			Subject subject, Student student) {
+		super();
+		this.attendance = attendance;
+		this.subject = subject;
+		this.student = student;
+	}
+
+	public Attendance() {
+		super();
+	}
+
+	public int getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(int attendance) {
+		this.attendance = attendance;
+	}
+
+	public Subject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	@Override
+	public String toString() {
+		return "Attendance [attendance=" + attendance + ", subject=" + subject + ", student=" + student + "]";
+	}
+	
+	
+	
+	
 }

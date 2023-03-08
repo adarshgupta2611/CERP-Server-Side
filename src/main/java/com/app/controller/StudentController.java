@@ -28,7 +28,13 @@ public class StudentController {
 	
 	@PostMapping("/signup")
 	public ResponseEntity<?> studentRegistration(@Valid @RequestBody StudentRequestDto student){
-		return ResponseEntity.status(HttpStatus.CREATED).body(studentService.addStudent(student, student.getCourseId()));
+		Student st = studentService.addStudent(student, student.getCourseId());
+		if(st!=null) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(st);
+		}
+		else {
+			return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body("Student already signed up");
+		}
 	}
 	
 	@GetMapping("/{studentId}")
@@ -42,7 +48,7 @@ public class StudentController {
 		Student student =studentService.authenticateStudent(studentcredential.getEmail(), studentcredential.getPassword());
 
         if (student != null) {
-            return ResponseEntity.ok("Logged in successfully");
+            return ResponseEntity.ok(student.getId());
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }
