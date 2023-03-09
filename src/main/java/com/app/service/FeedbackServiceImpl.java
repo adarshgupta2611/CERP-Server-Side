@@ -11,6 +11,7 @@ import com.app.dto.FeedbackDto;
 import com.app.entities.Feedback;
 import com.app.entities.Student;
 import com.app.entities.Subject;
+import com.app.entity.projection.FeedbackList;
 import com.app.repository.FeedbackRepository;
 import com.app.repository.StudentRepository;
 import com.app.repository.SubjectRepository;
@@ -61,8 +62,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 		return feedbackRepository.findById(id).orElse(null);
 	}
 
-//	@Override
-//	public List<Integer> showFeedback(String subjectName) {
-//		return feedbackRepository.findAllBySubjectName(subjectName);
-//	}	
+	@Override
+	public List<FeedbackList> showFeedback(String subjectName) {
+	return feedbackRepository.findAllBySubjectNameAndSortedById(subjectName);
+}	
 }
