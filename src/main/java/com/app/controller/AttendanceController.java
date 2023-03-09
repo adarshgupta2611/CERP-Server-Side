@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.AttendanceRequestDto;
+import com.app.dto.UpdateAttendanceDto;
 import com.app.entities.Attendance;
 import com.app.entity.projection.AttendanceList;
 import com.app.service.AttendanceService;
@@ -52,8 +53,8 @@ public class AttendanceController {
 	}
 	
 	 @PatchMapping("/{subjectName}/{studentId}")
-	    public ResponseEntity<?> updateAttendance(@RequestBody int attendance,@PathVariable String subjectName, @PathVariable Long studentId){
-	    	attendanceService.updateAttendance(attendance, subjectName, studentId);
+	    public ResponseEntity<?> updateAttendance(@RequestBody UpdateAttendanceDto attendance,@PathVariable String subjectName, @PathVariable Long studentId){
+	    	attendanceService.updateAttendance(attendance.getAttendance(), subjectName, studentId);
 	    	return ResponseEntity.ok("updated successfully");
 	    }
    
