@@ -6,15 +6,19 @@ import javax.persistence.Entity;
 
 public class Course extends BaseEntity {
 	private String courseName;
-	
+
+
 	public Course(String courseName) {
 		super();
 		this.courseName = courseName;
 	}
 
+
+
 	public Course() {
 		super();
 	}
+
 
 	public String getCourseName() {
 		return courseName;
@@ -24,10 +28,13 @@ public class Course extends BaseEntity {
 		this.courseName = courseName;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Course [courseName=" + courseName + "]";
+		return "Course [courseName=" + courseName  +"]";
 	}
-	
-	
+
+
+
 }

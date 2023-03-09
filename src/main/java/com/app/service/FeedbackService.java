@@ -8,7 +8,7 @@ import com.app.entities.Feedback;
 public interface FeedbackService {
 	Feedback addFeedback(FeedbackDto feedbackdto, Long studentId, String subjectName);
 	Feedback getFeedbackById(Long id);
-	List<Integer> showFeedback(String subjectName);
+//	List<Integer> showFeedback(String subjectName);
 }
 
 

@@ -40,7 +40,13 @@ public class FeedbackServiceImpl implements FeedbackService {
 		Feedback feedback = new Feedback();
 
 		if(fd==null) {
-			feedback.setRating(feedbackdto.getRating());
+			feedback.setKnowledge(feedbackdto.getKnowledge());
+			feedback.setCommunication(feedbackdto.getCommunication());
+			feedback.setGuidance(feedbackdto.getGuidance());
+			feedback.setPunctuality(feedbackdto.getPunctuality());
+			feedback.setTeaching(feedbackdto.getTeaching());
+			feedback.setSuggestion(feedbackdto.getSuggestion());
+
 			feedback.setStudent(student);
 			feedback.setSubject(subject);
 			return feedbackRepository.save(feedback);
@@ -55,8 +61,8 @@ public class FeedbackServiceImpl implements FeedbackService {
 		return feedbackRepository.findById(id).orElse(null);
 	}
 
-	@Override
-	public List<Integer> showFeedback(String subjectName) {
-		return feedbackRepository.findAllBySubjectName(subjectName);
-	}	
+//	@Override
+//	public List<Integer> showFeedback(String subjectName) {
+//		return feedbackRepository.findAllBySubjectName(subjectName);
+//	}	
 }

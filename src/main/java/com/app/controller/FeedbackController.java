@@ -38,13 +38,13 @@ public class FeedbackController {
 		}
 	}
 	
-	@GetMapping("/{subjectName}")
-	public ResponseEntity<?> showFeedback(@PathVariable String subjectName){
-		List<Integer> feedbackList = feedbackService.showFeedback(subjectName);
-    	if(feedbackList!=null)
-    		return ResponseEntity.ok(feedbackList);
-    	else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid subject name");
-	}
+//	@GetMapping("/{subjectName}")
+//	public ResponseEntity<?> showFeedback(@PathVariable String subjectName){
+//		List<Integer> feedbackList = feedbackService.showFeedback(subjectName);
+//    	if(feedbackList!=null)
+//    		return ResponseEntity.ok(feedbackList);
+//    	else
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid subject name");
+//	}
 }
 

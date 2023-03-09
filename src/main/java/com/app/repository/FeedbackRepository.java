@@ -16,6 +16,6 @@ public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
 
 	Feedback findByStudentAndSubject(Student student, Subject subject);
 	
-	@Query("Select rating from Feedback f where f.subject.subjectName=:subjectName")
-	List<Integer> findAllBySubjectName(String subjectName);
+//	@Query("Select rating from Feedback f where f.subject.subjectName=:subjectName")
+//	List<Integer> findAllBySubjectName(String subjectName);
 }
