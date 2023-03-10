@@ -1,5 +1,4 @@
 package com.app.entities;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
@@ -11,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-
 public class Admin extends BaseEntity {
 	@Column(length = 30,unique = true)
 	@NotBlank(message = "Email id is required")

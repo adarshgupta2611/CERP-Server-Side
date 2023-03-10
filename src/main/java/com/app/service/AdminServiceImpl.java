@@ -40,7 +40,6 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<Subject> getSubjectList(String courseName) {
 		Course course =  courseRepository.findByCourseName(courseName);
-
 		List<Subject> subjects = subjectRepository.findAllByCourse(course) ;
 		return subjects;
 	}
