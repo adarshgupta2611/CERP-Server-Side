@@ -21,8 +21,4 @@ public interface AttendanceRepository extends JpaRepository<Attendance, Long>{
 	List<AttendanceList> findAllBySubjectNameAndSortedById(@Param("subjectName") String subjectName);
 
 	Attendance findAttendanceByStudentAndSubject(Student student, Subject subject);
-
-	@Modifying
-	@Query("UPDATE Attendance a SET a.attendance=:attendance where a.subject.subjectName=:subjectName and a.student.id=:studentId")
-	void updateAttendanceBySubjectNameAndId(@Param("attendance") int attendance, @Param("subjectName") String subjectName, @Param("studentId") Long studentId);
 }
