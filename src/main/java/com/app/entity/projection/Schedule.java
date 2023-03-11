@@ -3,6 +3,7 @@ package com.app.entity.projection;
 import java.time.LocalDateTime;
 
 public class Schedule {
+	private long scheduleId;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;
 	private String Location;
@@ -11,8 +12,10 @@ public class Schedule {
 	public Schedule() {
 	}
 
-	public Schedule(LocalDateTime startTime, LocalDateTime endTime, String location, String subjectName) {
+	public Schedule(long scheduleId, LocalDateTime startTime, LocalDateTime endTime, String location,
+			String subjectName) {
 		super();
+		this.scheduleId = scheduleId;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		Location = location;
@@ -49,6 +52,14 @@ public class Schedule {
 
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
+	}
+
+	public long getScheduleId() {
+		return scheduleId;
+	}
+
+	public void setScheduleId(long scheduleId) {
+		this.scheduleId = scheduleId;
 	}
 
 	@Override
