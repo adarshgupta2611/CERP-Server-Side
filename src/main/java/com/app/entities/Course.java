@@ -1,6 +1,6 @@
 package com.app.entities;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Entity
 
