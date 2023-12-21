@@ -8,7 +8,7 @@ public class Schedule {
 	private LocalDateTime endTime;
 	private String Location;
 	private String subjectName;
-	
+
 	public Schedule() {
 	}
 

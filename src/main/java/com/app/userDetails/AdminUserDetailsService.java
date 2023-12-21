@@ -20,6 +20,6 @@ public class AdminUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Admin> admin = adminRepository.findByEmail(username);
-        return  admin.map(AdminUserDetails::new).orElse(null);
+        return admin.map(AdminUserDetails::new).orElse(null);
     }
 }

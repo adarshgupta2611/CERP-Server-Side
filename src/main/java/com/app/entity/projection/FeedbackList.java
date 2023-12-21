@@ -3,106 +3,94 @@ package com.app.entity.projection;
 
 public class FeedbackList {
 
-	private long studentId;
-	private int knowledge;
-	private int communication;
-	private int punctuality;
-	private int teaching;
-	private int guidance;
-	private String suggestion;
+    private long studentId;
+    private int knowledge;
+    private int communication;
+    private int punctuality;
+    private int teaching;
+    private int guidance;
+    private String suggestion;
 
-	public FeedbackList() {
-		super();
-	}
+    public FeedbackList() {
+        super();
+    }
 
-	public FeedbackList(long studentId, int knowledge, int communication, int punctuality, int teaching,
-			int guidance, String suggestion) {
-		super();
-		this.studentId = studentId;
-		this.knowledge = knowledge;
-		this.communication = communication;
-		this.punctuality = punctuality;
-		this.teaching = teaching;
-		this.guidance = guidance;
-		this.suggestion = suggestion;
-	}
+    public FeedbackList(long studentId, int knowledge, int communication, int punctuality, int teaching,
+                        int guidance, String suggestion) {
+        super();
+        this.studentId = studentId;
+        this.knowledge = knowledge;
+        this.communication = communication;
+        this.punctuality = punctuality;
+        this.teaching = teaching;
+        this.guidance = guidance;
+        this.suggestion = suggestion;
+    }
 
-	public long getStudentId() {
-		return studentId;
-	}
-	
-	public void setStudentId(long studentId) {
-		this.studentId = studentId;
-	}
+    public long getStudentId() {
+        return studentId;
+    }
 
-	public String getSuggestion() {
-		return suggestion;
-	}
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
 
-	public void setSuggestion(String suggestion) {
-		this.suggestion = suggestion;
-	}
+    public String getSuggestion() {
+        return suggestion;
+    }
 
-	public int getKnowledge() {
-		return knowledge;
-	}
+    public void setSuggestion(String suggestion) {
+        this.suggestion = suggestion;
+    }
 
-
-
-	public void setKnowledge(int knowledge) {
-		this.knowledge = knowledge;
-	}
+    public int getKnowledge() {
+        return knowledge;
+    }
 
 
-
-	public int getCommunication() {
-		return communication;
-	}
-
+    public void setKnowledge(int knowledge) {
+        this.knowledge = knowledge;
+    }
 
 
-	public void setCommunication(int communication) {
-		this.communication = communication;
-	}
+    public int getCommunication() {
+        return communication;
+    }
 
 
-
-	public int getPunctuality() {
-		return punctuality;
-	}
-
+    public void setCommunication(int communication) {
+        this.communication = communication;
+    }
 
 
-	public void setPunctuality(int punctuality) {
-		this.punctuality = punctuality;
-	}
+    public int getPunctuality() {
+        return punctuality;
+    }
 
 
-
-	public int getTeaching() {
-		return teaching;
-	}
-
+    public void setPunctuality(int punctuality) {
+        this.punctuality = punctuality;
+    }
 
 
-	public void setTeaching(int teaching) {
-		this.teaching = teaching;
-	}
+    public int getTeaching() {
+        return teaching;
+    }
 
 
-
-	public int getGuidance() {
-		return guidance;
-	}
-
+    public void setTeaching(int teaching) {
+        this.teaching = teaching;
+    }
 
 
-	public void setGuidance(int guidance) {
-		this.guidance = guidance;
-	}
+    public int getGuidance() {
+        return guidance;
+    }
 
 
-
+    public void setGuidance(int guidance) {
+        this.guidance = guidance;
+    }
 
 
 }

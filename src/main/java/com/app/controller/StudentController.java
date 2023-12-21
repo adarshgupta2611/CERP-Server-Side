@@ -1,22 +1,17 @@
 package com.app.controller;
 
-import jakarta.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.app.dto.StudentCredentials;
 import com.app.dto.StudentRequestDto;
 import com.app.entities.Student;
+import com.app.security.JwtHelper;
 import com.app.service.StudentService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
@@ -25,6 +20,9 @@ import com.app.service.StudentService;
 public class StudentController {
 	@Autowired
 	private StudentService studentService;
+
+	@Autowired
+	private JwtHelper jwtHelper;
 	
 	@PostMapping("/signup")
 	public ResponseEntity<?> studentRegistration(@Valid @RequestBody StudentRequestDto student){
@@ -43,12 +41,13 @@ public class StudentController {
 	}
 	
 	@PostMapping("/signin")
-    public ResponseEntity<?> login(@RequestBody StudentCredentials studentcredential) {
+    public ResponseEntity<?> login(@RequestBody StudentCredentials studentCredential) {
 		
-		Student student =studentService.authenticateStudent(studentcredential.getEmail(), studentcredential.getPassword());
+		Student student =studentService.authenticateStudent(studentCredential.getEmail(), studentCredential.getPassword());
 
         if (student != null) {
-            return ResponseEntity.ok(student.getId());
+			String token = jwtHelper.generateToken(student.getEmail(), Map.of("id", student.getId()));
+            return ResponseEntity.ok(Map.of("token",token,"id",student.getId()));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
         }

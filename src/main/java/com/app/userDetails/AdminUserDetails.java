@@ -1,6 +1,7 @@
 package com.app.userDetails;
 
 import com.app.entities.Admin;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Component
+@NoArgsConstructor
 public class AdminUserDetails implements UserDetails {
 
     private String email;
@@ -20,7 +22,7 @@ public class AdminUserDetails implements UserDetails {
         this.password = password;
     }
 
-    public AdminUserDetails(Admin admin){
+    public AdminUserDetails(Admin admin) {
         this.email = admin.getEmail();
         this.password = admin.getPassword();
     }

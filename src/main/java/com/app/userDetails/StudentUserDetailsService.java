@@ -1,8 +1,6 @@
 package com.app.userDetails;
 
-import com.app.entities.Admin;
 import com.app.entities.Student;
-import com.app.repository.AdminRepository;
 import com.app.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,15 +1,14 @@
 package com.app.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
 import com.app.entities.Feedback;
 import com.app.entities.Student;
 import com.app.entities.Subject;
 import com.app.entity.projection.FeedbackList;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 
 

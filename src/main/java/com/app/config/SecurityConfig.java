@@ -1,5 +1,6 @@
-package com.app.security;
+package com.app.config;
 
+import com.app.security.JwtFilter;
 import com.app.userDetails.AdminUserDetailsService;
 import com.app.userDetails.StudentUserDetailsService;
 import org.jetbrains.annotations.NotNull;
@@ -20,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableMethodSecurity
-public class SecurityService {
+public class SecurityConfig {
 
     @Autowired
     private AdminUserDetailsService adminUserDetailsService;
@@ -35,29 +36,36 @@ public class SecurityService {
     public SecurityFilterChain securityFilterChain(@NotNull HttpSecurity http) throws Exception {
 //        CSRF disable
         http.csrf(AbstractHttpConfigurer::disable);
-        http.authenticationProvider(adminAuthenticationProvider());
-        http.authenticationProvider(studentAuthenticationProvider());
+
 //        Request Matching
-        http.authorizeHttpRequests(auth->auth.requestMatchers("/signin/**").permitAll());
+        //        Public Access
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/admins/signin", "admins/trial").permitAll());
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/students/signup", "/students/signin").permitAll());
+        //        Restricted Access
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/admins/**").hasAuthority("ADMIN"));
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/students/**").hasAuthority("STUDENT"));
+//        JWT Filter
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
 
     }
 
-    public AuthenticationProvider adminAuthenticationProvider(){
+    @Bean(name = "adminAuthenticationProvider")
+    public AuthenticationProvider adminAuthenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider(passwordEncoder());
         auth.setUserDetailsService(adminUserDetailsService);
         return auth;
     }
-    public AuthenticationProvider studentAuthenticationProvider(){
+
+    @Bean(name = "studentAuthenticationProvider")
+    public AuthenticationProvider studentAuthenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider(passwordEncoder());
         auth.setUserDetailsService(studentUserDetailsService);
         return auth;
     }
 
-
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -65,4 +73,5 @@ public class SecurityService {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+
 }

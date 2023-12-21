@@ -1,13 +1,17 @@
 package com.app.userDetails;
 
 import com.app.entities.Student;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 
+@Component
+@NoArgsConstructor
 public class StudentUserDetails implements UserDetails {
     private String firstName;
     private String lastName;
@@ -27,7 +31,7 @@ public class StudentUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ADMIN"));
+        return List.of(new SimpleGrantedAuthority("STUDENT"));
     }
 
     @Override

@@ -1,8 +1,7 @@
 package com.app.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import com.app.entities.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
