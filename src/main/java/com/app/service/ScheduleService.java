@@ -1,9 +1,9 @@
 package com.app.service;
 
-import java.util.List;
-
 import com.app.dto.ScheduleRequestDto;
 import com.app.entities.Schedule;
+
+import java.util.List;
 
 public interface ScheduleService {
 	Schedule addSchedule(ScheduleRequestDto scheduleDto, String courseName);
