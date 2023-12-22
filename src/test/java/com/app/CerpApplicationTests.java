@@ -2,11 +2,16 @@ package com.app;
 
 import com.app.entities.*;
 import com.app.repository.*;
+import com.app.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
 import java.time.LocalDateTime;
@@ -204,5 +209,18 @@ class CerpApplicationTests {
 				new Schedule(LocalDateTime.parse("2023-03-16T09:30:00"),LocalDateTime.parse("2023-03-16T13:30:00"),"Lab 102",cs2,sb9),
 				new Schedule(LocalDateTime.parse("2023-03-16T13:00:00"),LocalDateTime.parse("2023-03-16T16:00:00"),"Lab 102",cs2,sb15),
 				new Schedule(LocalDateTime.parse("2023-03-17T18:00:00"),LocalDateTime.parse("2023-03-17T20:00:00"),"Lab 102",cs2,sb12)));
+	}
+
+	@Test
+	void sortTest(){
+		List<Student> listName = sr.findAll(Sort.by(Sort.Direction.ASC, "firstName"));
+		listName.forEach(System.out::println);
+	}
+
+	@Test
+	void paginationTest(){
+		Page<Student> allStudentPage = sr.findAll(PageRequest.of(0, 10));
+		allStudentPage.forEach(System.out::println);
+		System.out.println(allStudentPage.getSize());
 	}
 }
