@@ -33,7 +33,7 @@ public class StudentController {
 		else {
 			return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body("Student already signed up");
 		}
-	}
+	} 
 	
 	@GetMapping("/{studentId}")
 	public ResponseEntity<?> getStudentDetails(@PathVariable Long studentId){
