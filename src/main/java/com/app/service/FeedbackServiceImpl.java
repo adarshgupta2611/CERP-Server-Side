@@ -64,7 +64,7 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    @Cacheable(cacheNames = "subject_feedback", key = "#id")
+    @Cacheable(cacheNames = "subject_feedback", key = "#subjectName")
     public List<FeedbackList> showFeedback(String subjectName) {
         return feedbackRepository.findAllBySubjectNameAndSortedById(subjectName);
     }
