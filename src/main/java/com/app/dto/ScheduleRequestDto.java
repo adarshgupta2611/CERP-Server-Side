@@ -1,8 +1,9 @@
 package com.app.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class ScheduleRequestDto {
+public class ScheduleRequestDto  implements Serializable{
 	private Long Id;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;

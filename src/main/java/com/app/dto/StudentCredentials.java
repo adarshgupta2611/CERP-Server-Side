@@ -1,6 +1,8 @@
 package com.app.dto;
 
-public class StudentCredentials {
+import java.io.Serializable;
+
+public class StudentCredentials  implements Serializable{
 	private String email;
 	private String password;
 	

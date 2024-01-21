@@ -1,7 +1,8 @@
 package com.app.entity.projection;
 
+import java.io.Serializable;
 
-public class FeedbackList {
+public class FeedbackList implements Serializable{
 
     private long studentId;
     private int knowledge;

@@ -1,6 +1,8 @@
 package com.app.dto;
 
-public class AdminDto {
+import java.io.Serializable;
+
+public class AdminDto  implements Serializable{
 
     private String email;
     private String password;

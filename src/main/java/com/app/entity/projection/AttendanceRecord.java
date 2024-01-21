@@ -3,7 +3,7 @@ package com.app.entity.projection;
 import com.app.entities.Course;
 
 
-public class AttendanceRecord {
+public class AttendanceRecord  implements Serializable{
     private int attendance;
     private String subjectName;
     private String firstName;

@@ -2,7 +2,7 @@ package com.app.entity.projection;
 
 import com.app.entities.Student;
 
-public class AttendanceList {
+public class AttendanceList implements Serializable {
     private Student student;
     private int attendance;
 

@@ -1,7 +1,8 @@
 package com.app.dto;
 
+import java.io.Serializable;
 
-public class FeedbackDto {
+public class FeedbackDto  implements Serializable{
 	 private int knowledge;
 	    private int communication;
 	    private int punctuality;

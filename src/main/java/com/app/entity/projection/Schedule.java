@@ -1,8 +1,9 @@
 package com.app.entity.projection;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Schedule {
+public class Schedule  implements Serializable{
 	private long scheduleId;
 	private LocalDateTime startTime;
 	private LocalDateTime endTime;

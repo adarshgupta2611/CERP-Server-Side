@@ -1,6 +1,8 @@
 package com.app.dto;
 
-public class AttendanceDto {
+import java.io.Serializable;
+
+public class AttendanceDto implements Serializable {
 
 	private Long studentId;
 	private Long subjectId;

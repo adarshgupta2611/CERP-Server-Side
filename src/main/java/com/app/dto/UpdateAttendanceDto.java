@@ -1,6 +1,8 @@
 package com.app.dto;
 
-public class UpdateAttendanceDto {
+import java.io.Serializable;
+
+public class UpdateAttendanceDto implements Serializable {
 	private int attendance;
 
 	public UpdateAttendanceDto(int attendance) {

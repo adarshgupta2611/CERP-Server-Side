@@ -1,6 +1,8 @@
 package com.app.dto;
 
-public class StudentRequestDto {
+import java.io.Serializable;
+
+public class StudentRequestDto  implements Serializable{
 	private String firstName;
 	private String lastName;
 	private String email;
