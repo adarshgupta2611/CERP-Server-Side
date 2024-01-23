@@ -1,5 +1,7 @@
 package com.app.entity.projection;
 
+import java.io.Serializable;
+
 import com.app.entities.Student;
 
 public class AttendanceList implements Serializable {
